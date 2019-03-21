@@ -21,6 +21,16 @@ body,html{
 	 top: 0;
 	 left: 0;
  }
+ .map
+ {
+	 margin-top: 20px;
+	 margin-left: 5px;
+	 width: 200px;
+	 height: 100px;
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+ }
  input{
     width: 100%;
  }
