@@ -10,16 +10,18 @@ if ($conn->connect_error) {
 session_start();
 $r=$_SESSION['user_id'];
 $result=mysqli_query($conn,"SELECT Q5 FROM answers");
-$result1=mysqli_query($conn,"SELECT total FROM progress where TeamID=$r");
+$result1=mysqli_query($conn,"SELECT Q5,total FROM progress where TeamID=$r");
 $row=mysqli_fetch_assoc($result);
 $row1=mysqli_fetch_assoc($result1);
 $p=$row['Q5'];
 echo $p;
 $q=$row1['total'];
+$s=$row1['Q5'];
 echo $p;
 if($_POST["pswrd"] == $p)
-{
-mysqli_query($conn,"UPDATE progress SET Q5=1,total=total+1 WHERE TeamID=$r");
+{	if($s==1){	header('Location: Questions.html');}
+	else{
+mysqli_query($conn,"UPDATE progress SET Q5=1,total=total+1 WHERE TeamID=$r");}
 if($q+1==5)
 {
 	

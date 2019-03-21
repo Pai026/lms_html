@@ -14,20 +14,30 @@ if($_POST["pswrd"] == "abhi")
 $stmt = $conn->prepare("INSERT INTO teams (Teamname) VALUES (?)");
 $stmt->bind_param("s", $_POST['userid']);
 $stmt->execute();
-
-$result=mysqli_query($conn,'SELECT TeamID FROM teams');
+$id1=$_POST['userid'];
+$result=mysqli_query($conn,"SELECT TeamID FROM teams WHERE Teamname='$id1'");
 $row=mysqli_fetch_assoc($result);
 $num=mysqli_num_rows($result);
-if($num==1)
+if($num>=1)
 {   
 	session_start();
 	$id=$row['TeamID'];
 	$_SESSION['user_id'] = $row['TeamID'];
 	mysqli_query($conn,"UPDATE teams SET timestamps=CURRENT_TIMESTAMP() WHERE Teamid=$id");
+	$result2=mysqli_query($conn,"SELECT TeamID FROM progress");
+	while($row2=mysqli_fetch_assoc($result2))
+	{	if($_SESSION['user_id']==$row2)
+			$flag=1;
+		else
+			$flag=0;
+	}
+	if(flag==0){
 	$stmt = $conn->prepare("INSERT INTO progress(TeamID) VALUES (?)");
 	$stmt->bind_param("i", $id);
 	$stmt->execute();
-	header('Location: Questions.html');
+	header('Location: Questions.html');}
+	else
+		header('Location: Questions.html');
 }
 
 }

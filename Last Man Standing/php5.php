@@ -11,16 +11,17 @@ if ($conn->connect_error) {
 session_start();
 $r=$_SESSION['user_id'];
 $result=mysqli_query($conn,"SELECT Q4 FROM answers");
-$result1=mysqli_query($conn,"SELECT total FROM progress WHERE TeamID=$r");
+$result1=mysqli_query($conn,"SELECT Q4,total FROM progress WHERE TeamID=$r");
 $row=mysqli_fetch_assoc($result);
 $row1=mysqli_fetch_assoc($result1);
 $p=$row['Q4'];
 $q=$row1['total'];
+$s=$row1['Q4'];
 echo $p;
-echo $_POST['pswrd'];
 if($_POST["pswrd"] == $p)
-{
-mysqli_query($conn,"UPDATE progress SET Q4=1,total=total+1 WHERE TeamID=$r");
+{	if($s==1){	header('Location: Questions.html');}
+	else{
+mysqli_query($conn,"UPDATE progress SET Q4=1,total=total+1 WHERE TeamID=$r");}
 if($q+1==5)
 {
 	
