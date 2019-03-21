@@ -1,0 +1,30 @@
+* {
+    font-family: 'Fresca', georgia, sans-serif;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+.task1
+{
+     font-size: 45px;
+     margin: auto;
+ }
+ input{
+    width: 100%;
+ }
+
+ .task1 .button p
+{
+    display: inline;
+}
+
+button{
+    width: 150px;
+}
+.b4{
+    margin-left: 50%;
+    transform: translate(-50%,0);
+}
