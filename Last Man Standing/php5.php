@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password= "";
-$dbname = "lastmanstanding";
+$dbname = "lastmanstanding1";
 
 $conn =new \MySQLi($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -19,9 +19,8 @@ $q=$row1['total'];
 $s=$row1['Q4'];
 echo $p;
 if($_POST["pswrd"] == $p)
-{	if($s==1){	header('Location: Questions.html');}
-	else{
-mysqli_query($conn,"UPDATE progress SET Q4=1,total=total+1 WHERE TeamID=$r");}
+{	
+mysqli_query($conn,"UPDATE progress SET Q4=1,total=total+1 WHERE TeamID=$r");
 if($q+1==5)
 {
 	

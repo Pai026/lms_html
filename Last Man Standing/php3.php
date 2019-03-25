@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password= "";
-$dbname = "lastmanstanding";
+$dbname = "lastmanstanding1";
 
 $conn =new \MySQLi($servername, $username, $password, $dbname);
 
@@ -15,14 +15,13 @@ $result=mysqli_query($conn,"SELECT Q2 FROM answers");
 $result1=mysqli_query($conn,"SELECT Q2,total FROM progress where TeamID=$r");
 $row=mysqli_fetch_assoc($result);
 $row1=mysqli_fetch_assoc($result1);
-$p=$row['Q5'];
+$p=$row['Q2'];
 $q=$row1['total'];
 $s=$row1['Q2'];
 echo $p;
 if($_POST["pswrd"] == $p)
-{	if($s==1){	header('Location: Questions.html');}
-	else{
-mysqli_query($conn,"UPDATE progress SET Q2=1,total=total+1 WHERE TeamID=$r");}
+{	
+mysqli_query($conn,"UPDATE progress SET Q2=1,total=total+1 WHERE TeamID=$r");
 if($q+1==5)
 {
 	mysqli_query($conn,"UPDATE teams SET timestampf=CURRENT_TIMESTAMP() WHERE TeamID=$r");
