@@ -173,3 +173,21 @@ body
     border-radius: 200px;
 }
 
+.m3 button
+{
+    font-size:15px;
+    font-family:Audiowide;
+    border:1px solid #00FF00;
+    background-color: #000000;
+    color:#ff0000;
+    border-radius: 200px;
+}
+.m3q button
+{
+    font-size:25px;
+    font-family:Audiowide;
+    border:1px solid #00FF00;
+    background-color: #000000;
+    color:#ff0000;
+    border-radius: 200px;
+}
